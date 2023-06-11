@@ -11,4 +11,5 @@
     import * as rd from "redux";
 */
 
-// Module2.js
+// Module3.js
+"use strict";

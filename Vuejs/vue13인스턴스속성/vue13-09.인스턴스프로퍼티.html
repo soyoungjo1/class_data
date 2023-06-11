@@ -55,6 +55,7 @@
         methods : {
             clickBtn(event){
                 console.log(event.target);
+                console.log(event.target.value);
             }
         }
 
@@ -82,3 +83,46 @@
   </body>
 
 </html>
+
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      mesg1: null,
+      // mesg2: null,
+    },
+    //template: ``,
+    methods: {
+      msgKey(e) {
+        console.log(e.target.value);
+        this.$data.mesg1 = e.target.value;
+      }
+    },
+
+    computed: {
+      /* 자동처리 + 동기식. 변수명이 메서드 명이다. 메서드로 작성. return 필수.  data 와 공존 불가 */
+      mesg2() {
+        return this.$data.mesg1 + ":" + new Date().toLocaleDateString()
+      }
+    },
+    watch: {
+      /* 자동처리 + 비동기식. data 에 등록된 프로퍼티(변수) 모니터링. 메서드로 작성. 매개변수 필수. 외부 api 호출을 위해서 사용 */
+
+    },
+    created() {
+      console.log("created");
+    },
+    mounted() {
+      console.log("mounted");
+    },
+    updated() {
+      console.log("updated");
+    },
+  });
+
+</script>
