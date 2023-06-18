@@ -345,3 +345,104 @@
   </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      newTodoItem: null,
+      showModal: false,
+      todoItems: [
+        { id: 1, todo: "영화보기", done: false },
+        { id: 2, todo: "주말 산책", done: true },
+        { id: 3, todo: "ES6 학습", done: false },
+        { id: 4, todo: "잠실 야구장", done: false }
+      ],
+    },
+    //template: ``,
+    methods: {
+      clearAll(e) {
+        console.log(e.target);
+        debugger;
+        this.$data.todoItems = [];
+      },
+      checked(done) {
+        if (done) {
+          return 'checked';
+
+          return null;
+        }
+      },
+      doneToggle(id) {
+        debugger;
+        //1. 새로운 배열 만들기
+        const newarr = this.$data.todoItems.map((value, index, array) => {
+          if (value.id === id)
+            value.done = !value.done;
+
+          return value;
+        });
+
+        this.$data.todoItems = newarr;
+      },
+      removeTodo(id) {
+        debugger;
+        // window.event.target.stopPropagation();
+        // window.event.target.preventDefault();
+
+        //1.새로운 배열 만들기
+        const newarr = this.$data.todoItems.filter((value, index, array) => {
+          if (value.id === id)
+            return false;
+
+          return true;
+        });
+
+        this.$data.todoItems = newarr;
+      },
+      addTodo(e) {
+        console.log(e.target);
+
+        debugger;
+
+        //빈문자를 입력했을 때 showModal: true 로 변경
+        if (!this.$data.newTodoItem || this.$data.newTodoItem.trim().length <= 0) {
+          this.$data.showModal = !this.$data.showModal;
+          return;
+        }
+
+        const ids = this.$data.todoItems.map((value, index, array) => {
+          //value ==={ id, done, todo}
+          return value.id
+        });
+
+        //ids에서 최대값 찾기 => max(), reduce()
+        const maxid = ids.reduce((pvalue, cvalue, index, array) => {
+          debugger;
+          if (pvalue > cvalue)
+            return pvalue;
+          else
+            return cvalue;
+        }, 0);
+
+        const newobj = {
+          id: maxid + 1,
+          todo: this.$data.newTodoItem,
+          done: false,
+        };
+
+        //배열에 추가 => push
+        // this.$data.todoItems.push(newobj);
+        this.$data.todoItems = [...this.$data.todoItems, newobj];
+
+        //입력된 값 초기화
+        this.$data.newTodoItem = null;
+
+      },
+    },
+  });
+
+</script>

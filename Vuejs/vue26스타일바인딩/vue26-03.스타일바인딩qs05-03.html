@@ -98,3 +98,36 @@
   </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#example3',
+    data: {
+      style1: null,
+
+    },
+    //template: ``,
+    methods: {
+      clickArrow(e) {
+        console.log(e.target);
+        this.$data.style1 = {
+          height: '50px',
+          width: '150px',
+          border: '1px solid black',
+          textAlign: 'center',
+          lineHeight: '50px',
+          fontWeight: '800',
+          color: 'red',
+          backgroundColor: ' darkgoldenrod',
+          padding: '50px',
+        };
+        debugger;
+      }
+    },
+  });
+
+</script>

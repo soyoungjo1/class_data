@@ -106,3 +106,80 @@
   </body>
 
 </html>
+
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app1',
+    data: {
+      awesome: true,
+    },
+  });
+
+</script>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app2',
+    data: {
+      awesome: false,
+    },
+  });
+
+</script>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app3',
+    data: {
+      awesome: false,
+    },
+    methods: {
+      clickBind(e) {
+        if (awesome === true) {
+          this.$data.awesome = false;
+        } else {
+          this.$data.awesome = true;
+        }
+        // this.$data.awesome = !this.$data.awesome;
+      }
+    },
+  });
+
+</script>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app4',
+    data: {
+      type: 0,
+    },
+    methods: {
+      clickBind(e) {
+        this.$data.type = this.$data.type + 1;
+        console.log(this.$data.type);
+        if (this.$data.type > 3) {
+          this.$data.type = 0;
+        }
+        // this.$data.type = { this.$data.type + 1 } % 4;
+      },
+    }
+  });
+
+</script>
