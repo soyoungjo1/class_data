@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import  CompStyle from './containers/styled/CompStyle';
+import PageHome from './pages/PageHome';
 
-function App(){
-      return(
-        <div>
-          <CompStyle></CompStyle>
-        </div>
-      );
-    }
+function App() {
+  return (
+    <div>
+      <PageHome></PageHome>
+    </div>
+  );
+}
 
 export default App;

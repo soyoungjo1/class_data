@@ -1,7 +1,26 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment, forwardRef, useImperativeHandle } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  useReducer,
+  Fragment,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { BrowserRouter, Routes, Route, NavLink, useParams, useLocation, useHistory, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  NavLink,
+  useParams,
+  useLocation,
+  useHistory,
+  useNavigate,
+} from 'react-router-dom';
 
 //스타일을 위한 컴포넌트
 const StyledCompStyle = styled.div`
@@ -23,23 +42,34 @@ const StyledCircle = styled.div`
    */
   width: 5rem;
   height: 5rem;
-  background: black;
+  background: ${(props) => props.color || 'black'};
   border-radius: 50%;
   margin: auto;
+
+  ${(props) =>
+    props.isHuge &&
+    css`
+      width: 10rem;
+      height: 10rem;
+    `}
 `;
 
 // const {...props} = props;
 function CompStyle({ ...props }) {
-      return (
-        <StyledCompStyle>
-          <h2>styled-components 로 만든</h2>
-          <div className="App">styled-components 스타일로 만든</div>
-          <hr />
-          <StyledCircle></StyledCircle>
-          <hr />
-        </StyledCompStyle>
-      );
-    }
+  return (
+    <StyledCompStyle>
+      <h2>styled-components 로 만든</h2>
+      <div className="App">styled-components 스타일로 만든</div>
+      <hr />
+      <StyledCircle></StyledCircle>
+      <hr />
+      <StyledCircle color={'blue'}></StyledCircle>
+      <hr />
+      <StyledCircle color={'red'} isHuge={true}></StyledCircle>
+      <hr />
+    </StyledCompStyle>
+  );
+}
 
 CompStyle.propTypes = {
   // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
